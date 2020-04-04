@@ -1,4 +1,5 @@
 from math import sqrt
+from time import process_time
 from scipy.stats import f, t
 from functools import partial
 from random import randrange
@@ -41,6 +42,7 @@ xxx2 = [round(x * y * z, 3) for x, y, z in zip(x[0], x[1], x[2])]
 x_x = [[round(x[j][i] ** 2, 3) for i in range(N)] for j in range(3)]  # натуральні значення факторів для квадрат. членів
 
 while True:
+    start_time = process_time()
     # формування Y
     y = [[round(3.5 + 6.6 * x[0][j] + 5.3 * x[1][j] + 5 * x[2][j] + 5.1 * x[0][j] * x[0][j] + 0.1 * x[1][j] * x[1][j] +
                 7.2 * x[2][j] * x[2][j] + 1.4 * x[0][j] * x[1][j] + 0.7 * x[0][j] * x[2][j] + 4.2 * x[1][j] * x[2][j] +
@@ -185,6 +187,7 @@ while True:
             break
         else:
             print("\tРівняння регресії адекватне (Ft > Fp)!")
+            print("\n\n--- Час виконання програми: %s секунд ---" % (process_time() - start_time))
             break
 
     else:
